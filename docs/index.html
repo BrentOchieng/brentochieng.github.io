@@ -7,8 +7,6 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -16,7 +14,7 @@
   </style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-950 to-black text-white">
+<body class="bg-gradient-to-br from-blue-950 to-blue-900 text-white">
 
   <!-- Navigation -->
   <header class="p-6 flex justify-center border-b border-blue-800">
@@ -30,7 +28,7 @@
   </header>
 
   <!-- HERO SECTION -->
-  <section class="max-w-5xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
+  <section id="about" class="max-w-5xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
     <img src="profile.jpg" alt="Profile Photo" class="w-48 h-48 rounded-full border-4 border-blue-600 shadow-lg">
     <div>
       <h1 class="text-4xl font-bold mb-2">Brent Ochieng</h1>
@@ -45,35 +43,43 @@
     </div>
   </section>
 
+  <!-- Separator -->
+  <hr class="border-blue-700 my-8">
+
   <!-- SKILLS -->
-  <section id="skills" class="max-w-4xl mx-auto px-6 py-16 text-center">
-    <h2 class="text-3xl font-semibold mb-8">Skills</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-gray-300 text-lg">
-      <span>Python</span><span>SQL</span><span>Power BI</span><span>Excel</span>
-      <span>Machine Learning</span><span>Data Cleaning</span><span>DAX</span><span>Data Visualization</span>
-    </div>
+  <section id="skills" class="max-w-3xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-semibold mb-6 text-center">Skills</h2>
+    <ul class="text-gray-300 text-lg space-y-2 list-disc list-inside max-w-md mx-auto">
+      <li>Python</li>
+      <li>SQL</li>
+      <li>Power BI</li>
+      <li>Excel</li>
+      <li>Machine Learning</li>
+      <li>Data Cleaning</li>
+      <li>DAX</li>
+      <li>Data Visualization</li>
+    </ul>
   </section>
+
+  <!-- Separator -->
+  <hr class="border-blue-700 my-8">
 
   <!-- PROJECTS -->
   <section id="projects" class="max-w-4xl mx-auto px-6 py-16">
     <h2 class="text-3xl font-semibold text-center mb-8">Projects</h2>
-
     <div class="space-y-6">
       <div class="bg-blue-900/30 p-5 rounded-lg border border-blue-700">
         <h3 class="font-bold text-lg">Predictive Analysis of Global EV Adoption</h3>
         <p class="text-gray-300 text-sm">Used supervised regression to forecast electric vehicle adoption trends worldwide.</p>
       </div>
-
       <div class="bg-blue-900/30 p-5 rounded-lg border border-blue-700">
         <h3 class="font-bold text-lg">Bank Customer Churn - Power BI Dashboard</h3>
         <p class="text-gray-300 text-sm">Developed BI reports and DAX logic to analyze churn drivers and customer behavior.</p>
       </div>
-
       <div class="bg-blue-900/30 p-5 rounded-lg border border-blue-700">
         <h3 class="font-bold text-lg">Global Monkeypox Outbreak Clustering</h3>
         <p class="text-gray-300 text-sm">Applied K-Means clustering to group outbreak patterns across regions.</p>
       </div>
-
       <div class="bg-blue-900/30 p-5 rounded-lg border border-blue-700">
         <h3 class="font-bold text-lg">Life Expectancy Forecasting Model</h3>
         <p class="text-gray-300 text-sm">Predicted global life expectancy trends using Prophet forecasting models.</p>
@@ -81,14 +87,30 @@
     </div>
   </section>
 
+  <!-- Separator -->
+  <hr class="border-blue-700 my-8">
+
   <!-- CERTIFICATIONS -->
-  <section id="certs" class="max-w-4xl mx-auto px-6 py-16 text-center">
-    <h2 class="text-3xl font-semibold mb-4">Certifications</h2>
-    <p class="text-gray-300">Google Data Analytics | Microsoft Power BI | Machine Learning Specialization (coursera)</p>
+  <section id="certs" class="max-w-5xl mx-auto px-6 py-16 text-center">
+    <h2 class="text-3xl font-semibold mb-8">CERTIFICATIONS</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="border border-blue-700 rounded-lg overflow-hidden hover:scale-105 transition transform">
+        <img src="cert1.png" alt="Certificate" class="w-full h-auto">
+      </div>
+      <div class="border border-blue-700 rounded-lg overflow-hidden hover:scale-105 transition transform">
+        <img src="cert2.png" alt="Certificate" class="w-full h-auto">
+      </div>
+      <div class="border border-blue-700 rounded-lg overflow-hidden hover:scale-105 transition transform">
+        <img src="cert3.png" alt="Certificate" class="w-full h-auto">
+      </div>
+    </div>
   </section>
 
+  <!-- Separator -->
+  <hr class="border-blue-700 my-8">
+
   <!-- CONTACT -->
-  <section id="contact" class="text-center py-16 border-t border-blue-800">
+  <section id="contact" class="text-center py-16">
     <h2 class="text-3xl font-semibold mb-4">Contact</h2>
     <p class="text-gray-300 mb-1">Email: <span class="text-blue-300">brentwash35@gmail.com</span></p>
     <p class="text-gray-300 mb-1">Phone: <span class="text-blue-300">+254718704473</span></p>
@@ -98,6 +120,11 @@
 </body>
 </html>
 
+ 
+
+
+
+ 
  
 
  
