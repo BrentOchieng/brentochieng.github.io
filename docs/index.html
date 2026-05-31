@@ -2,155 +2,229 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brent Ochieng | Data Analyst</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brent Ochieng | Data Analyst Portfolio</title>
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      scroll-behavior: smooth; /* Smooth scrolling */
+      scroll-behavior: smooth;
+      background-color: #081018;
+    }
+
+    .glass {
+      background: rgba(17, 24, 39, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+    }
+
+    .glow {
+      box-shadow: 0 0 80px rgba(56, 189, 248, 0.15);
+    }
+
+    .hover-card {
+      transition: all 0.3s ease;
+    }
+
+    .hover-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(56, 189, 248, 0.15);
     }
   </style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-950 to-blue-900 text-white">
+<body class="text-slate-100">
 
-  <!-- Navigation -->
-  <header class="sticky top-0 z-50 bg-blue-950 bg-opacity-90 backdrop-blur-md p-6 border-b border-blue-800">
-    <nav class="max-w-6xl mx-auto flex justify-center space-x-6 text-blue-300 font-medium">
-      <a href="#about" class="hover:text-white transition">About</a>
-      <a href="#skills" class="hover:text-white transition">Skills</a>
-      <a href="#projects" class="hover:text-white transition">Projects</a>
-      <a href="#certs" class="hover:text-white transition">Certifications</a>
-      <a href="#contact" class="hover:text-white transition">Contact</a>
-    </nav>
-  </header>
+<!-- Background Glow -->
+<div class="fixed inset-0 -z-10">
+  <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500 opacity-10 blur-[150px]"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 opacity-10 blur-[150px]"></div>
+</div>
 
-  <!-- HERO SECTION -->
-  <section id="about" class="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-12">
-    <img src="profile.jpg" alt="Profile Photo" class="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-blue-600 shadow-lg">
-    <div>
-      <h1 class="text-5xl md:text-6xl font-bold mb-3">Brent Ochieng</h1>
-      <p class="text-xl md:text-2xl text-blue-300 font-medium">
-        Data Analyst · Business Intelligence · 
-      </p>
-      <p class="text-gray-300 mt-6 leading-relaxed text-lg md:text-xl max-w-xl">
-        I specialize in transforming raw data into strategic insights through data analysis,
-        forecasting models, and dashboard reporting. I help organizations make data-driven decisions
-        that create measurable business impact.
-      </p>
-    </div>
-  </section>
+<!-- NAV -->
+<header class="sticky top-0 z-50 glass p-5">
+  <nav class="flex justify-center gap-8 text-slate-300">
+    <a href="#about" class="hover:text-cyan-400">About</a>
+    <a href="#skills" class="hover:text-cyan-400">Skills</a>
+    <a href="#tools" class="hover:text-cyan-400">Tools</a>
+    <a href="#projects" class="hover:text-cyan-400">Projects</a>
+    <a href="#contact" class="hover:text-cyan-400">Contact</a>
+  </nav>
+</header>
 
-  <!-- Separator -->
-  <hr class="border-blue-700 my-12">
+<!-- HERO -->
+<section id="about" class="max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-10">
 
-  <!-- SKILLS -->
-  <section id="skills" class="max-w-3xl mx-auto px-6 py-16">
-    <h2 class="text-3xl md:text-4xl font-semibold mb-8 text-center">Skills</h2>
-    <ul class="text-gray-300 text-lg md:text-xl space-y-3 list-disc list-inside max-w-md mx-auto">
-      <li>Python</li>
-      <li>SQL</li>
-      <li>Power BI</li>
-      <li>Excel</li>
-      <li>Predictive Machine Learning</li>
-      <li>Data Cleaning</li>
-      <li>DAX</li>
-      <li>Data Visualization</li>
-    </ul>
-  </section>
+  <img src="profile.jpg" class="w-64 h-64 rounded-full border-4 border-cyan-500 shadow-xl glow"/>
 
-  <!-- Separator -->
-  <hr class="border-blue-700 my-12">
+  <div>
+    <h1 class="text-5xl font-bold">Brent Ochieng</h1>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="max-w-5xl mx-auto px-6 py-16">
-    <h2 class="text-3xl md:text-4xl font-semibold text-center mb-10">Projects</h2>
-    <div class="space-y-6">
-      <a href="https://github.com/BrentOchieng/mental-health-text-classifier" class="block">
-        <div class="bg-blue-900/40 p-6 rounded-lg border border-blue-700 hover:bg-blue-800 hover:scale-105 transition transform duration-300 shadow-lg">
-          <h3 class="font-bold text-lg md:text-xl">Mental Health Text Classifier (BERT-Powered NLP Framework)</h3>
-          <p class="text-gray-300 text-sm md:text-base mt-1">End-to-end NLP framework using a fine-tuned BERT transformer model and Streamlit to classify psychological context (Anxiety, Depression, Normal, Suicidal) from text sequences. Features interactive Plotly analytics dashboards and automated safety override safeguards.</p>
-        </div>
+    <p class="text-cyan-400 mt-2 text-xl">
+      Data Analyst | Data Scientist | AI & Business Intelligence Specialist
+    </p>
+
+    <p class="text-slate-400 mt-6 max-w-xl">
+      I transform raw data into actionable insights using machine learning, statistical modeling,
+      and interactive dashboards. I specialize in solving real-world business problems through data-driven intelligence.
+    </p>
+
+    <!-- CTA -->
+    <div class="flex gap-4 mt-6">
+      <a href="https://www.linkedin.com/in/brent-ochieng-777390105/" target="_blank"
+         class="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold hover:bg-cyan-400">
+        LinkedIn
       </a>
 
-      <a href="https://github.com/BrentOchieng/Credit-Risk-Prediction" target="_blank" class="block">
-        <div class="bg-blue-900/40 p-6 rounded-lg border border-blue-700 hover:bg-blue-800 hover:scale-105 transition transform duration-300 shadow-lg">
-          <h3 class="font-bold text-lg md:text-xl">Credit Risk Prediction system </h3>
-          <p class="text-gray-300 text-sm md:text-base mt-1">End-to-end Credit Risk Prediction system using XGBoost and Streamlit. Features a real-time risk assessment dashboard to predict loan defaults and analyze key financial risk drivers.</p>
-        </div>
-      </a>
-
-      <a href="https://github.com/BrentOchieng/Customer-Segmentation-KMeans-Hierarchical-Clustering/blob/main/README.md" target="_blank" class="block">
-        <div class="bg-blue-900/40 p-6 rounded-lg border border-blue-700 hover:bg-blue-800 hover:scale-105 transition transform duration-300 shadow-lg">
-          <h3 class="font-bold text-lg md:text-xl">Customer Segmentation: Multi-Algorithmic Clustering Analysis</h3>
-          <p class="text-gray-300 text-sm md:text-base mt-1">Retail customer segmentation using PCA, K-Means, and Hierarchical Clustering to identify actionable business personas and optimize marketing ROI..</p>
-        </div>
-      </a>
-
-      <a href="https://github.com/BrentOchieng/Global-Life-Expectancy-Trend-1960-2049" target="_blank" class="block">
-        <div class="bg-blue-900/40 p-6 rounded-lg border border-blue-700 hover:bg-blue-800 hover:scale-105 transition transform duration-300 shadow-lg">
-          <h3 class="font-bold text-lg md:text-xl">Life Expectancy Forecasting Model</h3>
-          <p class="text-gray-300 text-sm md:text-base mt-1">Predicted global life expectancy trends using Prophet forecasting models.</p>
-        </div>
+      <a href="https://github.com/BrentOchieng" target="_blank"
+         class="px-4 py-2 border border-cyan-500 rounded-lg hover:bg-cyan-500 hover:text-black">
+        GitHub
       </a>
     </div>
-  </section>
 
-  <!-- Separator -->
-  <hr class="border-blue-700 my-12">
+    <!-- KPI CARDS -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
 
-  <!-- CERTIFICATIONS -->
-  <section id="certs" class="max-w-6xl mx-auto px-6 py-16 text-center">
-    <h2 class="text-3xl md:text-4xl font-semibold mb-10">CERTIFICATIONS</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="border border-blue-700 rounded-lg overflow-hidden hover:scale-105 transition transform duration-300 shadow-lg">
-        <img src="./alx.png" alt="Certificate" class="mx-auto w-64 h-auto">
+      <div class="glass p-4 rounded-xl text-center hover-card">
+        <h2 class="text-cyan-400 text-2xl font-bold">15+</h2>
+        <p class="text-slate-400 text-sm">Projects</p>
       </div>
-      <div class="border border-blue-700 rounded-lg overflow-hidden hover:scale-105 transition transform duration-300 shadow-lg">
-        <img src="./data_science.png" alt="Certificate" class="mx-auto w-64 h-auto">
+
+      <div class="glass p-4 rounded-xl text-center hover-card">
+        <h2 class="text-cyan-400 text-2xl font-bold">5+</h2>
+        <p class="text-slate-400 text-sm">ML Models</p>
       </div>
-      <div class="border border-blue-700 rounded-lg overflow-hidden hover:scale-105 transition transform duration-300 shadow-lg">
-        <img src="./python.png" alt="Certificate" class="mx-auto w-64 h-auto">
+
+      <div class="glass p-4 rounded-xl text-center hover-card">
+        <h2 class="text-cyan-400 text-2xl font-bold">4+</h2>
+        <p class="text-slate-400 text-sm">Certifications</p>
       </div>
-      <div class="border border-blue-700 rounded-lg overflow-hidden hover:scale-105 transition transform duration-300 shadow-lg">
-        <img src="./sql.png" alt="Certificate" class="mx-auto w-64 h-auto">
+
+      <div class="glass p-4 rounded-xl text-center hover-card">
+        <h2 class="text-cyan-400 text-2xl font-bold">100K+</h2>
+        <p class="text-slate-400 text-sm">Records Analyzed</p>
       </div>
+
     </div>
-  </section>
 
-  <!-- Separator -->
-  <hr class="border-blue-700 my-12">
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="text-center py-16">
-    <h2 class="text-3xl md:text-4xl font-semibold mb-6">Contact</h2>
-    <p class="text-gray-300 mb-2">Email: <span class="text-blue-300">brentwash35@gmail.com</span></p>
-    <p class="text-gray-300 mb-2">Phone: <span class="text-blue-300">+254718704473</span></p>
-    <p class="text-gray-300">LinkedIn: <span class="text-blue-300">Brent Ochieng</span></p>
-    <p class="text-gray-300">Github:   <span class="text-blue-300">Brent Ochieng</span></p>
-  </section>
+<!-- SKILLS -->
+<section id="skills" class="max-w-6xl mx-auto px-6 py-20">
+
+<h2 class="text-4xl font-bold text-center mb-12">Core Competencies</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+<div class="glass p-6 rounded-xl hover-card">
+<h3 class="text-cyan-400 font-semibold text-xl">Machine Learning Implementation</h3>
+</div>
+
+<div class="glass p-6 rounded-xl hover-card">
+<h3 class="text-cyan-400 font-semibold text-xl">Data Wrangling & Feature Engineering</h3>
+</div>
+
+<div class="glass p-6 rounded-xl hover-card">
+<h3 class="text-cyan-400 font-semibold text-xl">Data Visualization & Storytelling</h3>
+</div>
+
+<div class="glass p-6 rounded-xl hover-card">
+<h3 class="text-cyan-400 font-semibold text-xl">SQL Data Extraction & Querying</h3>
+</div>
+
+<div class="glass p-6 rounded-xl hover-card">
+<h3 class="text-cyan-400 font-semibold text-xl">Statistical Analysis & Hypothesis Testing</h3>
+</div>
+
+<div class="glass p-6 rounded-xl hover-card">
+<h3 class="text-cyan-400 font-semibold text-xl">Data Manipulation & Modeling</h3>
+</div>
+
+</div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" class="max-w-6xl mx-auto px-6 py-20 text-center">
+
+<h2 class="text-4xl font-bold mb-10">Tools & Technologies</h2>
+
+<div class="flex flex-wrap justify-center gap-4">
+
+<span class="glass px-5 py-2 rounded-full">Python</span>
+<span class="glass px-5 py-2 rounded-full">SQL</span>
+<span class="glass px-5 py-2 rounded-full">Tableau</span>
+<span class="glass px-5 py-2 rounded-full">Power BI</span>
+<span class="glass px-5 py-2 rounded-full">Excel</span>
+<span class="glass px-5 py-2 rounded-full">DAX</span>
+<span class="glass px-5 py-2 rounded-full">Data Visualization</span>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="max-w-6xl mx-auto px-6 py-20">
+
+<h2 class="text-4xl font-bold text-center mb-12">Featured Projects</h2>
+
+<div class="space-y-6">
+
+<a href="https://github.com/BrentOchieng/mental-health-text-classifier" target="_blank">
+<div class="glass p-6 rounded-xl hover-card">
+<h3 class="text-xl font-bold text-cyan-400">Mental Health Text Classifier (BERT NLP)</h3>
+<p class="text-slate-400 mt-2">NLP system using transformer models for psychological text classification.</p>
+<div class="mt-3 text-sm text-slate-500">Python • BERT • Streamlit • NLP</div>
+</div>
+</a>
+
+<a href="https://github.com/BrentOchieng/Credit-Risk-Prediction" target="_blank">
+<div class="glass p-6 rounded-xl hover-card">
+<h3 class="text-xl font-bold text-cyan-400">Credit Risk Prediction System</h3>
+<p class="text-slate-400 mt-2">Machine learning system for loan default prediction using XGBoost.</p>
+<div class="mt-3 text-sm text-slate-500">Python • XGBoost • ML • Streamlit</div>
+</div>
+</a>
+
+<a href="https://github.com/BrentOchieng/Customer-Segmentation-KMeans-Hierarchical-Clustering" target="_blank">
+<div class="glass p-6 rounded-xl hover-card">
+<h3 class="text-xl font-bold text-cyan-400">Customer Segmentation Analysis</h3>
+<p class="text-slate-400 mt-2">Clustering-based segmentation for business intelligence insights.</p>
+<div class="mt-3 text-sm text-slate-500">Python • KMeans • PCA • ML</div>
+</div>
+</a>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="text-center py-20">
+
+<h2 class="text-4xl font-bold mb-8">Let's Connect</h2>
+
+<div class="flex flex-col gap-4 items-center text-slate-300">
+
+<a href="mailto:brentwash35@gmail.com" class="hover:text-cyan-400"> Email Me</a>
+
+<a href="tel:+254718704473" class="hover:text-cyan-400"> Call Me</a>
+
+<a href="https://www.linkedin.com/in/brent-ochieng-777390105/" target="_blank" class="hover:text-cyan-400"> LinkedIn</a>
+
+<a href="https://github.com/BrentOchieng" target="_blank" class="hover:text-cyan-400"> GitHub</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center text-slate-500 py-10 border-t border-slate-800">
+  © 2026 Brent Ochieng | Data Analytics Portfolio
+</footer>
 
 </body>
 </html>
-
-   
-       
-
-      
-
-
-
-  
- 
-
-
-
- 
- 
-
- 
