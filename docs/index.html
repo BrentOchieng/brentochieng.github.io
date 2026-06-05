@@ -2,427 +2,404 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Brent Ochieng | Data Analyst Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #1e293b;
+      background: #0a0f1a;
+      color: #e2e8f0;
       scroll-behavior: smooth;
       line-height: 1.6;
     }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    section { padding: 80px 0; }
-    .section-light { background: #ffffff; }
-    .section-subtle { background: #f8fafc; }
 
-    /* Cards */
-    .card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 189, 248, 0.1);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 189, 248, 0.08);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    .card:hover {
+    .glass-card:hover {
       transform: translateY(-4px);
-      border-color: #2563eb;
-      box-shadow: 0 20px 60px -12px rgba(37,99,235,0.12);
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 20px 60px -12px rgba(56, 189, 248, 0.15);
     }
 
-    /* Text */
+    /* Gradient text */
     .gradient-text {
-      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .text-muted { color: #64748b; }
-    .text-accent { color: #2563eb; }
-    .text-dark { color: #0f172a; }
 
     /* Animations */
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .animate-fade-in { animation: fadeInUp 0.6s ease forwards; }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.7; }
+    }
+    .animate-fade-in {
+      animation: fadeInUp 0.6s ease forwards;
+    }
     .animate-fade-in-delay {
       animation: fadeInUp 0.6s ease 0.2s forwards;
       opacity: 0;
     }
 
-    /* Hero */
-    .hero-accent {
+    /* Hero glow */
+    .hero-glow {
       position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(37,99,235,0.05) 0%, transparent 70%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%);
+      animation: pulseGlow 4s ease-in-out infinite;
       pointer-events: none;
     }
 
-    /* Nav */
-    nav a {
-      color: #475569;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: #2563eb; }
-
-    /* Skills */
+    /* Skill tags */
     .skill-tag {
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.15);
       transition: all 0.2s;
-      cursor: default;
     }
     .skill-tag:hover {
-      background: #dbeafe;
-      border-color: #2563eb;
+      background: rgba(56, 189, 248, 0.2);
+      border-color: #38bdf8;
     }
 
-    /* Progress bar */
+    /* Progress bar animation */
     .progress-bar {
       height: 6px;
       border-radius: 3px;
-      background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+      background: linear-gradient(90deg, #38bdf8 0%, #818cf8 100%);
       transition: width 0.8s ease;
-    }
-
-    /* Project badges */
-    .badge {
-      display: inline-block;
-      padding: 4px 12px;
-      background: #eff6ff;
-      color: #2563eb;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    /* Cert cards */
-    .cert-card {
-      cursor: pointer;
     }
 
     /* Lightbox */
     #lightbox {
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.85);
       backdrop-filter: blur(8px);
-    }
-
-    /* Buttons */
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      color: #1e293b;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-    .btn-outline:hover {
-      border-color: #2563eb;
-      background: #f8fafc;
-    }
-
-    /* Stats */
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #0f172a;
-      line-height: 1;
-    }
-    .stat-label {
-      color: #64748b;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid #e2e8f0;
-      padding: 32px 0;
-      text-align: center;
-      color: #64748b;
-      font-size: 0.9rem;
     }
 
     /* Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #f8fafc; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+    ::-webkit-scrollbar-track { background: #0a0f1a; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;">
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;height:64px;">
-      <span style="font-weight:700;font-size:1.25rem;color:#0f172a;">BO</span>
-      <div style="display:flex;gap:24px;">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact">Contact</a>
-      </div>
+<!-- Background Glow -->
+<div class="fixed inset-0 -z-10 overflow-hidden">
+  <div class="hero-glow top-[-10%] left-[-10%]"></div>
+  <div class="hero-glow bottom-[-10%] right-[-10%]" style="animation-delay: 2s; background: radial-gradient(circle, rgba(129,140,248,0.08) 0%, transparent 70%);"></div>
+</div>
+
+<!-- NAV (sticky glass) -->
+<header class="sticky top-0 z-50 glass border-b border-cyan-500/10">
+  <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+    <span class="text-xl font-bold gradient-text">BO</span>
+    <div class="flex gap-8 text-sm font-medium text-slate-400">
+      <a href="#about" class="hover:text-cyan-400 transition">About</a>
+      <a href="#skills" class="hover:text-cyan-400 transition">Skills</a>
+      <a href="#projects" class="hover:text-cyan-400 transition">Projects</a>
+      <a href="#certifications" class="hover:text-cyan-400 transition">Certifications</a>
+      <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
     </div>
   </nav>
+</header>
 
-  <!-- Hero -->
-  <section style="padding-top:120px;padding-bottom:80px;position:relative;overflow:hidden;">
-    <div class="hero-accent" style="top:-200px;right:-200px;"></div>
-    <div class="container" style="position:relative;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
-        <div>
-          <span style="display:inline-block;padding:6px 16px;background:#eff6ff;color:#2563eb;border-radius:999px;font-weight:600;font-size:0.85rem;letter-spacing:0.03em;margin-bottom:16px;">Data Analyst &amp; Scientist</span>
-          <h1 style="font-size:3.5rem;font-weight:800;line-height:1.1;margin-bottom:16px;color:#0f172a;">
-            Brent Ochieng
-          </h1>
-          <p style="font-size:1.15rem;color:#475569;max-width:500px;margin-bottom:28px;">
-            I turn raw data into strategic decisions — using machine learning, statistical modeling, and intuitive dashboards.
-          </p>
-          <div style="display:flex;gap:12px;">
-            <a href="#" class="btn-outline" style="background:#0f172a;color:white;border-color:#0f172a;">LinkedIn</a>
-            <a href="#" class="btn-outline">GitHub</a>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-          <div class="card" style="padding:24px;text-align:center;">
-            <div class="stat-number">15+</div>
-            <div class="stat-label">Projects</div>
-          </div>
-          <div class="card" style="padding:24px;text-align:center;">
-            <div class="stat-number">5+</div>
-            <div class="stat-label">ML Models</div>
-          </div>
-          <div class="card" style="padding:24px;text-align:center;">
-            <div class="stat-number">4</div>
-            <div class="stat-label">Certifications</div>
-          </div>
-          <div class="card" style="padding:24px;text-align:center;">
-            <div class="stat-number">100K+</div>
-            <div class="stat-label">Records Analyzed</div>
-          </div>
-        </div>
-      </div>
+<!-- HERO -->
+<section id="about" class="max-w-6xl mx-auto px-6 pt-24 pb-16 flex flex-col md:flex-row items-center gap-12 animate-fade-in">
+  <div class="relative shrink-0">
+    <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-cyan-500/30 shadow-2xl">
+      <img src="profile.jpg" alt="Brent Ochieng" class="w-full h-full object-cover" />
     </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="section-subtle">
-    <div class="container">
-      <h2 style="font-size:2rem;font-weight:700;margin-bottom:8px;color:#0f172a;">Core Competencies</h2>
-      <p style="color:#64748b;margin-bottom:48px;">Technical skills I use daily to deliver data-driven solutions</p>
-
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px;">
-        <div class="card" style="padding:28px;">
-          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;color:#0f172a;">Machine Learning</div>
-          <p style="color:#64748b;font-size:0.9rem;">Classification, regression, clustering, feature engineering, model deployment</p>
-        </div>
-        <div class="card" style="padding:28px;">
-          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;color:#0f172a;">NLP &amp; Text Analytics</div>
-          <p style="color:#64748b;font-size:0.9rem;">Transformers, sentiment, topic modeling, BERT-based classifiers</p>
-        </div>
-        <div class="card" style="padding:28px;">
-          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;color:#0f172a;">Data Visualization</div>
-          <p style="color:#64748b;font-size:0.9rem;">Interactive dashboards, storytelling, Tableau, Power BI, Plotly</p>
-        </div>
-        <div class="card" style="padding:28px;">
-          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;color:#0f172a;">SQL &amp; Data Wrangling</div>
-          <p style="color:#64748b;font-size:0.9rem;">Complex queries, joins, window functions, ETL pipelines</p>
-        </div>
-        <div class="card" style="padding:28px;">
-          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;color:#0f172a;">Statistics &amp; A/B Testing</div>
-          <p style="color:#64748b;font-size:0.9rem;">Hypothesis testing, regression analysis, experimental design</p>
-        </div>
-        <div class="card" style="padding:28px;">
-          <div style="font-weight:600;font-size:1.1rem;margin-bottom:6px;color:#0f172a;">Data Engineering</div>
-          <p style="color:#64748b;font-size:0.9rem;">Python scripting, automation, API integration, cloud basics</p>
-        </div>
-      </div>
-
-      <h3 style="font-size:1.25rem;font-weight:600;margin-bottom:16px;color:#0f172a;">Tools &amp; Technologies</h3>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <span class="skill-tag" style="padding:8px 18px;border-radius:999px;font-weight:500;">Python</span>
-        <span class="skill-tag" style="padding:8px 18px;border-radius:999px;font-weight:500;">SQL</span>
-        <span class="skill-tag" style="padding:8px 18px;border-radius:999px;font-weight:500;">Tableau</span>
-        <span class="skill-tag" style="padding:8px 18px;border-radius:999px;font-weight:500;">Power BI</span>
-        <span class="skill-tag" style="padding:8px 18px;border-radius:999px;font-weight:500;">Excel</span>
-        <span class="skill-tag" style="padding:8px 18px;border-radius:999px;font-weight:500;">DAX</span>
-        <span class="skill-tag" style="padding:8px 18px;border-radius:999px;font-weight:500;">Pandas</span>
-        <span class="skill-tag" style="padding:8px 18px;border-radius:999px;font-weight:500;">Scikit‑learn</span>
-        <span class="skill-tag" style="padding:8px 18px;border-radius:999px;font-weight:500;">XGBoost</span>
-        <span class="skill-tag" style="padding:8px 18px;border-radius:999px;font-weight:500;">Streamlit</span>
-        <span class="skill-tag" style="padding:8px 18px;border-radius:999px;font-weight:500;">Git</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="section-light">
-    <div class="container">
-      <h2 style="font-size:2rem;font-weight:700;margin-bottom:8px;color:#0f172a;">Featured Projects</h2>
-      <p style="color:#64748b;margin-bottom:48px;">Real‑world applications of data science and analytics</p>
-
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
-        <div class="card" style="padding:28px;">
-          <span class="badge" style="margin-bottom:12px;">NLP &middot; BERT</span>
-          <h3 style="font-weight:600;font-size:1.15rem;margin-bottom:8px;color:#0f172a;">Mental Health Text Classifier</h3>
-          <p style="color:#475569;font-size:0.9rem;margin-bottom:16px;">Transformer-based system for psychological text classification with 89% accuracy. Deployed via Streamlit.</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">Python</span>
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">BERT</span>
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">Streamlit</span>
-          </div>
-        </div>
-
-        <div class="card" style="padding:28px;">
-          <span class="badge" style="margin-bottom:12px;">ML &middot; XGBoost</span>
-          <h3 style="font-weight:600;font-size:1.15rem;margin-bottom:8px;color:#0f172a;">Credit Risk Prediction</h3>
-          <p style="color:#475569;font-size:0.9rem;margin-bottom:16px;">Loan default prediction using XGBoost with feature importance analysis and interactive dashboard.</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">Python</span>
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">XGBoost</span>
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">Streamlit</span>
-          </div>
-        </div>
-
-        <div class="card" style="padding:28px;">
-          <span class="badge" style="margin-bottom:12px;">Classification</span>
-          <h3 style="font-weight:600;font-size:1.15rem;margin-bottom:8px;color:#0f172a;">British Airways Booking Prediction</h3>
-          <p style="color:#475569;font-size:0.9rem;margin-bottom:16px;">Random Forest &amp; XGBoost model predicting booking completion to optimize marketing spend.</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">Python</span>
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">Random Forest</span>
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">XGBoost</span>
-          </div>
-        </div>
-
-        <div class="card" style="padding:28px;">
-          <span class="badge" style="margin-bottom:12px;">Tableau &middot; ETL</span>
-          <h3 style="font-weight:600;font-size:1.15rem;margin-bottom:8px;color:#0f172a;">Nairobi Real Estate Market Analysis</h3>
-          <p style="color:#475569;font-size:0.9rem;margin-bottom:16px;">End‑to‑end analytics: web scraping, cleaning, exploratory analysis, and interactive Tableau dashboards.</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">Python</span>
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">BeautifulSoup</span>
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">Tableau</span>
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">Excel</span>
-          </div>
-        </div>
-
-        <div class="card" style="padding:28px;">
-          <span class="badge" style="margin-bottom:12px;">Clustering</span>
-          <h3 style="font-weight:600;font-size:1.15rem;margin-bottom:8px;color:#0f172a;">Customer Segmentation Analysis</h3>
-          <p style="color:#475569;font-size:0.9rem;margin-bottom:16px;">K‑Means &amp; hierarchical clustering with PCA visualization for marketing insights.</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">Python</span>
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">KMeans</span>
-            <span class="skill-tag" style="padding:4px 12px;border-radius:999px;font-size:0.8rem;">PCA</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Certifications -->
-  <section id="certifications" class="section-subtle">
-    <div class="container">
-      <h2 style="font-size:2rem;font-weight:700;margin-bottom:48px;color:#0f172a;">Certifications</h2>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
-        <div class="card cert-card" style="padding:32px;text-align:center;" data-src="https://via.placeholder.com/400x300?text=Google+Data+Analytics">
-          <div style="font-size:2.5rem;margin-bottom:12px;">📜</div>
-          <h3 style="font-weight:600;margin-bottom:4px;">Data Analytics Professional Certificate</h3>
-          <p style="color:#64748b;font-size:0.9rem;">Google Career Certificates</p>
-        </div>
-        <div class="card cert-card" style="padding:32px;text-align:center;" data-src="https://via.placeholder.com/400x300?text=IBM+Data+Science">
-          <div style="font-size:2.5rem;margin-bottom:12px;">📜</div>
-          <h3 style="font-weight:600;margin-bottom:4px;">Applied Data Science Certificate</h3>
-          <p style="color:#64748b;font-size:0.9rem;">IBM / Coursera</p>
-        </div>
-        <div class="card cert-card" style="padding:32px;text-align:center;" data-src="https://via.placeholder.com/400x300?text=Google+IT+Automation">
-          <div style="font-size:2.5rem;margin-bottom:12px;">📜</div>
-          <h3 style="font-weight:600;margin-bottom:4px;">IT Automation Certificate</h3>
-          <p style="color:#64748b;font-size:0.9rem;">Google Career Certificates</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section-light">
-    <div class="container" style="text-align:center;">
-      <h2 style="font-size:2rem;font-weight:700;margin-bottom:8px;color:#0f172a;">Let's Connect</h2>
-      <p style="color:#64748b;margin-bottom:40px;">Have a data challenge or a role that fits? Reach out — I'd love to chat.</p>
-      <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;">
-        <div>
-          <div style="font-weight:600;color:#0f172a;">Email</div>
-          <a href="mailto:brentwash35@gmail.com" style="color:#2563eb;text-decoration:none;">brentwash35@gmail.com</a>
-        </div>
-        <div>
-          <div style="font-weight:600;color:#0f172a;">Phone</div>
-          <span style="color:#475569;">+254 718 704 473</span>
-        </div>
-        <div>
-          <div style="font-weight:600;color:#0f172a;">LinkedIn</div>
-          <a href="#" style="color:#2563eb;text-decoration:none;">linkedin.com/in/brent</a>
-        </div>
-        <div>
-          <div style="font-weight:600;color:#0f172a;">GitHub</div>
-          <a href="#" style="color:#2563eb;text-decoration:none;">github.com/brent</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      &copy; 2026 Brent Ochieng — Data Analytics Portfolio &bull; Built with care for data-driven impact
-    </div>
-  </footer>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;justify-content:center;align-items:center;padding:32px;">
-    <img id="lightbox-img" src="" alt="certificate" style="max-width:90%;max-height:90%;border-radius:16px;box-shadow:0 40px 80px rgba(0,0,0,0.3);" />
+    <div class="absolute -bottom-2 -right-2 w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center text-black font-bold text-sm shadow-lg">DA</div>
   </div>
 
-  <script>
-    const certCards = document.querySelectorAll('.cert-card');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
+  <div>
+    <p class="text-cyan-400 font-medium tracking-wider uppercase text-sm mb-2">Data Analyst &amp; Scientist</p>
+    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+      Brent <span class="gradient-text">Ochieng</span>
+    </h1>
+    <p class="text-lg text-slate-300 mt-4 max-w-xl">
+      I turn raw data into strategic decisions using machine learning, statistical modeling, and intuitive dashboards.
+    </p>
 
-    certCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const src = card.getAttribute('data-src');
-        if (src) {
-          lightboxImg.src = src;
-          lightbox.classList.remove('hidden');
-          lightbox.style.display = 'flex';
-        }
-      });
-    });
+    <div class="flex flex-wrap gap-4 mt-8">
+      <a href="https://www.linkedin.com/in/brent-ochieng-777390105/" target="_blank" class="px-6 py-3 bg-cyan-500 text-black rounded-lg font-semibold hover:bg-cyan-400 transition flex items-center gap-2">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/BrentOchieng" target="_blank" class="px-6 py-3 border border-cyan-500/40 rounded-lg font-semibold hover:bg-cyan-500/10 transition flex items-center gap-2">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.3-.535-1.52.117-3.16 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.29-1.552 3.297-1.23 3.297-1.23.653 1.64.24 2.86.118 3.16.768.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.62-5.476 5.92.43.37.824 1.102.824 2.22 0 1.602-.015 2.894-.015 3.287 0 .322.216.694.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+    </div>
 
-    lightbox.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-      lightbox.classList.add('hidden');
-    });
+    <!-- KPI Cards -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 animate-fade-in-delay">
+      <div class="glass-card p-4 rounded-xl text-center">
+        <p class="text-3xl font-bold gradient-text">15+</p>
+        <p class="text-xs text-slate-500 mt-1">Projects</p>
+      </div>
+      <div class="glass-card p-4 rounded-xl text-center">
+        <p class="text-3xl font-bold gradient-text">5+</p>
+        <p class="text-xs text-slate-500 mt-1">ML Models</p>
+      </div>
+      <div class="glass-card p-4 rounded-xl text-center">
+        <p class="text-3xl font-bold gradient-text">5+</p>
+        <p class="text-xs text-slate-500 mt-1">Certifications</p>
+      </div>
+      <div class="glass-card p-4 rounded-xl text-center">
+        <p class="text-3xl font-bold gradient-text">100K+</p>
+        <p class="text-xs text-slate-500 mt-1">Records Analyzed</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        lightbox.style.display = 'none';
-        lightbox.classList.add('hidden');
+<!-- SKILLS + TOOLS combined -->
+<section id="skills" class="max-w-6xl mx-auto px-6 py-20">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Core Competencies</h2>
+  <p class="text-slate-400 text-center max-w-2xl mx-auto mb-12">Technical skills I use daily to deliver data-driven solutions</p>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+    <div class="glass-card p-6 rounded-xl">
+      <h3 class="text-lg font-semibold text-cyan-400">Machine Learning</h3>
+      <p class="text-sm text-slate-500 mt-2">Classification, regression, clustering, feature engineering, model deployment</p>
+      <div class="mt-4"><div class="bg-slate-700/50 rounded-full"><div class="progress-bar" style="width:90%"></div></div></div>
+    </div>
+    <div class="glass-card p-6 rounded-xl">
+      <h3 class="text-lg font-semibold text-cyan-400">NLP &amp; Text Analytics</h3>
+      <p class="text-sm text-slate-500 mt-2">Transformers, sentiment, topic modeling, BERT-based classifiers</p>
+      <div class="mt-4"><div class="bg-slate-700/50 rounded-full"><div class="progress-bar" style="width:85%"></div></div></div>
+    </div>
+    <div class="glass-card p-6 rounded-xl">
+      <h3 class="text-lg font-semibold text-cyan-400">Data Visualization</h3>
+      <p class="text-sm text-slate-500 mt-2">Interactive dashboards, storytelling, Tableau, Power BI, Plotly</p>
+      <div class="mt-4"><div class="bg-slate-700/50 rounded-full"><div class="progress-bar" style="width:92%"></div></div></div>
+    </div>
+    <div class="glass-card p-6 rounded-xl">
+      <h3 class="text-lg font-semibold text-cyan-400">SQL &amp; Data Wrangling</h3>
+      <p class="text-sm text-slate-500 mt-2">Complex queries, joins, window functions, ETL pipelines</p>
+      <div class="mt-4"><div class="bg-slate-700/50 rounded-full"><div class="progress-bar" style="width:88%"></div></div></div>
+    </div>
+    <div class="glass-card p-6 rounded-xl">
+      <h3 class="text-lg font-semibold text-cyan-400">Statistics &amp; A/B Testing</h3>
+      <p class="text-sm text-slate-500 mt-2">Hypothesis testing, regression analysis, experimental design</p>
+      <div class="mt-4"><div class="bg-slate-700/50 rounded-full"><div class="progress-bar" style="width:80%"></div></div></div>
+    </div>
+    <div class="glass-card p-6 rounded-xl">
+      <h3 class="text-lg font-semibold text-cyan-400">Data Engineering</h3>
+      <p class="text-sm text-slate-500 mt-2">Python scripting, automation, API integration, cloud basics</p>
+      <div class="mt-4"><div class="bg-slate-700/50 rounded-full"><div class="progress-bar" style="width:75%"></div></div></div>
+    </div>
+  </div>
+
+  <!-- Tools as tags -->
+  <h3 class="text-2xl font-bold text-center mb-6">Tools &amp; Technologies</h3>
+  <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+    <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium text-cyan-300">Python</span>
+    <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium text-cyan-300">SQL</span>
+    <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium text-cyan-300">Tableau</span>
+    <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium text-cyan-300">Power BI</span>
+    <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium text-cyan-300">Excel</span>
+    <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium text-cyan-300">DAX</span>
+    <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium text-cyan-300">Pandas</span>
+    <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium text-cyan-300">Scikit‑learn</span>
+    <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium text-cyan-300">XGBoost</span>
+    <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium text-cyan-300">Streamlit</span>
+    <span class="skill-tag px-4 py-2 rounded-full text-sm font-medium text-cyan-300">Git</span>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="max-w-6xl mx-auto px-6 py-20">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Featured Projects</h2>
+  <p class="text-slate-400 text-center max-w-2xl mx-auto mb-12">Real‑world applications of data science and analytics</p>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    <a href="https://github.com/BrentOchieng/mental-health-text-classifier" target="_blank" class="glass-card p-6 rounded-xl group">
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-3 h-3 rounded-full bg-cyan-500"></div>
+        <span class="text-xs text-slate-500 uppercase tracking-wider">NLP &middot; BERT</span>
+      </div>
+      <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition">Mental Health Text Classifier</h3>
+      <p class="text-slate-400 mt-2 text-sm">Transformer-based system for psychological text classification with 89% accuracy. Deployed via Streamlit.</p>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">Python</span>
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">BERT</span>
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">Streamlit</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/BrentOchieng/Credit-Risk-Prediction" target="_blank" class="glass-card p-6 rounded-xl group">
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-3 h-3 rounded-full bg-purple-500"></div>
+        <span class="text-xs text-slate-500 uppercase tracking-wider">ML &middot; XGBoost</span>
+      </div>
+      <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition">Credit Risk Prediction</h3>
+      <p class="text-slate-400 mt-2 text-sm">Loan default prediction using XGBoost with feature importance analysis and interactive dashboard.</p>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">Python</span>
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">XGBoost</span>
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">Streamlit</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/BrentOchieng/british-airways-booking-prediction-ml" target="_blank" class="glass-card p-6 rounded-xl group">
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+        <span class="text-xs text-slate-500 uppercase tracking-wider">Classification</span>
+      </div>
+      <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition">British Airways Booking Prediction</h3>
+      <p class="text-slate-400 mt-2 text-sm">Random Forest &amp; XGBoost model predicting booking completion to optimize marketing spend.</p>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">Python</span>
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">Random Forest</span>
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">XGBoost</span>
+      </div>
+    </a>
+
+    <a href="https://public.tableau.com/app/profile/brent.ochieng/viz/property24_analysis/Dashboard1" target="_blank" class="glass-card p-6 rounded-xl group">
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+        <span class="text-xs text-slate-500 uppercase tracking-wider">Tableau &middot; ETL</span>
+      </div>
+      <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition">Nairobi Real Estate Market Analysis</h3>
+      <p class="text-slate-400 mt-2 text-sm">End‑to‑end analytics: web scraping, cleaning, exploratory analysis, and interactive Tableau dashboards.</p>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">Python</span>
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">BeautifulSoup</span>
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">Tableau</span>
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">Excel</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/BrentOchieng/Customer-Segmentation-KMeans-Hierarchical-Clustering" target="_blank" class="glass-card p-6 rounded-xl group md:col-span-2 lg:col-span-1">
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-3 h-3 rounded-full bg-pink-500"></div>
+        <span class="text-xs text-slate-500 uppercase tracking-wider">Clustering</span>
+      </div>
+      <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition">Customer Segmentation Analysis</h3>
+      <p class="text-slate-400 mt-2 text-sm">K‑Means &amp; hierarchical clustering with PCA visualization for marketing insights.</p>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">Python</span>
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">KMeans</span>
+        <span class="text-xs bg-slate-700/50 px-2 py-1 rounded">PCA</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS (with lightbox) -->
+<section id="certifications" class="max-w-6xl mx-auto px-6 py-20">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Certifications</h2>
+  <p class="text-slate-400 text-center max-w-2xl mx-auto mb-12">Professional credentials that validate my expertise</p>
+
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="glass-card rounded-2xl overflow-hidden cursor-pointer group cert-card" data-src="data_analytics.png">
+      <img src="data_analytics.png" alt="Data Analytics Certificate" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500" />
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-cyan-400">Data Analytics Professional Certificate</h3>
+        <p class="text-xs text-slate-500 mt-1">Google Career Certificates</p>
+      </div>
+    </div>
+    <div class="glass-card rounded-2xl overflow-hidden cursor-pointer group cert-card" data-src="applied_datascience.png">
+      <img src="applied_datascience.png" alt="Applied Data Science Certificate" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500" />
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-cyan-400">Applied Data Science Certificate</h3>
+        <p class="text-xs text-slate-500 mt-1">IBM / Coursera</p>
+      </div>
+    </div>
+    <div class="glass-card rounded-2xl overflow-hidden cursor-pointer group cert-card" data-src="it_automation.png">
+      <img src="it_automation.png" alt="IT Automation Certificate" class="w-full h-auto object-cover group-hover:scale-105 transition duration-500" />
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-cyan-400">IT Automation Certificate</h3>
+        <p class="text-xs text-slate-500 mt-1">Google Career Certificates</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4">
+  <img id="lightbox-img" class="max-w-4xl max-h-[90vh] rounded-xl shadow-2xl border border-cyan-500/30" />
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="max-w-6xl mx-auto px-6 py-20 text-center border-t border-slate-800/50">
+  <h2 class="text-3xl md:text-4xl font-bold mb-6">Let’s Connect</h2>
+  <p class="text-slate-400 mb-10 max-w-xl mx-auto">Have a data challenge or a role that fits? Reach out — I’d love to chat.</p>
+
+  <div class="flex flex-col md:flex-row justify-center gap-8 text-slate-300 text-sm">
+    <a href="mailto:brentwash35@gmail.com" class="flex items-center gap-2 hover:text-cyan-400 transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      brentwash35@gmail.com
+    </a>
+    <a href="tel:+254718704473" class="flex items-center gap-2 hover:text-cyan-400 transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      +254 718 704 473
+    </a>
+    <a href="https://www.linkedin.com/in/brent-ochieng-777390105/" target="_blank" class="flex items-center gap-2 hover:text-cyan-400 transition">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/BrentOchieng" target="_blank" class="flex items-center gap-2 hover:text-cyan-400 transition">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.3-.535-1.52.117-3.16 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.29-1.552 3.297-1.23 3.297-1.23.653 1.64.24 2.86.118 3.16.768.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.62-5.476 5.92.43.37.824 1.102.824 2.22 0 1.602-.015 2.894-.015 3.287 0 .322.216.694.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      GitHub
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center text-slate-600 text-sm py-8 border-t border-slate-800/50">
+  &copy; 2026 Brent Ochieng &mdash; Data Analytics Portfolio &bull; Built with care for data-driven impact
+</footer>
+
+<!-- Lightbox script -->
+<script>
+  const certCards = document.querySelectorAll('.cert-card');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  certCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const src = card.getAttribute('data-src');
+      if (src) {
+        lightboxImg.src = src;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
       }
     });
-  </script>
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') lightbox.classList.add('hidden');
+  });
+</script>
+
 </body>
 </html>
